@@ -1,24 +1,6 @@
 # atcoder_abc128_c
 
-## Project setup
-```
-yarn install
-```
+AtCoder ABC128 C 問題の実演用リポジトリです。
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+問題はこちら：
+https://atcoder.jp/contests/abc128/tasks/abc128_c
