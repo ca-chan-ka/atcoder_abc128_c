@@ -1,3 +1,4 @@
 module.exports = {
-    outputDir : "docs"
+    outputDir : "docs",
+    publicPath: "/atcoder_abc128_c",
 }
