@@ -1,5 +1,7 @@
 <template>
     <div id="main">
+        <a href="https://atcoder.jp/contests/abc128/tasks/abc128_c">https://atcoder.jp/contests/abc128/tasks/abc128_c</a><br>
+        ※注意：最後の改行を忘れずに<br>
         <textarea class="input" v-model="input"></textarea>
         <h2>Switch:</h2>
         <div class="switch">
@@ -18,34 +20,37 @@ export default {
     components: {  },
     data() {
         return {
-            input: "",
+            input: "2 2\n2 1 2\n1 2\n0 1\n",
             switches: new Array(10).fill(0),
             lights: new Array(10).fill(0),
         }
     },
     watch: {
         input(value) {
-            const input = value
-                .split("\n")
-                .map(line => line.split(" ").map(character => character - 0));
-            this.switches = new Array(input[0][0]).fill(0);
+            this.switches = new Array(this.parseInput(value)[0][0]).fill(0);
             this.refresh();
         }
     },
     methods: {
         click(value) {
-            console.log(value);
             this.switches[value] = 1 - this.switches[value];
             this.refresh();
         },
         refresh() {
-            const input = this.input
-                .split("\n")
-                .map(line => line.split(" ").map(character => character - 0));
+            const input = this.parseInput(this.input);
             this.lights = new Array(input[0][1])
                 .fill(0)
                 .map((_, index) => input.slice(1)[index].slice(1).map(i => this.switches[i - 1]).filter(i => i == 1).length % 2 == input[input.length - 2][index]);
         },
+        parseInput(value) {
+            return value
+                .split("\n")
+                .map(line => line.split(" ").map(character => character - 0));
+        }
+    },
+    mounted() {
+        this.switches = new Array(this.parseInput(this.input)[0][0]).fill(0);
+        this.refresh();
     },
 }
 </script>
@@ -57,6 +62,7 @@ export default {
     font-size: 16px;
     box-sizing: border-box;
     user-select: none;
+    line-height: 1.75;
 }
 
 @font-face {
@@ -73,6 +79,7 @@ export default {
     background-color: #fafafa;
     padding: 8px;
     font-family: Number;
+    line-height: 1.25;
 }
 
 .light {
